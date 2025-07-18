@@ -1,0 +1,118 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "🚀 Deploy Infrastructure",
+            "type": "shell",
+            "command": "chmod +x infrastructure/create-infrastructure.sh && ./infrastructure/create-infrastructure.sh",
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": true,
+                "panel": "shared",
+                "showReuseMessage": false
+            },
+            "problemMatcher": [],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            }
+        },
+        {
+            "label": "📦 Build Docker Images",
+            "type": "shell",
+            "command": "docker-compose build",
+            "group": "build",
+            "options": {
+                "cwd": "${workspaceFolder}/docker"
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            }
+        },
+        {
+            "label": "🔄 Start Services",
+            "type": "shell",
+            "command": "docker-compose up -d",
+            "group": "build",
+            "options": {
+                "cwd": "${workspaceFolder}/docker"
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            }
+        },
+        {
+            "label": "⏹️ Stop Services",
+            "type": "shell",
+            "command": "docker-compose down",
+            "group": "build",
+            "options": {
+                "cwd": "${workspaceFolder}/docker"
+            }
+        },
+        {
+            "label": "📊 Check Status",
+            "type": "shell",
+            "command": "docker-compose ps",
+            "group": "test",
+            "options": {
+                "cwd": "${workspaceFolder}/docker"
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            }
+        },
+        {
+            "label": "📋 View Logs",
+            "type": "shell",
+            "command": "docker-compose logs -f",
+            "group": "test",
+            "options": {
+                "cwd": "${workspaceFolder}/docker"
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": true,
+                "panel": "shared"
+            }
+        },
+        {
+            "label": "🧹 Clean Up",
+            "type": "shell",
+            "command": "docker-compose down -v && docker system prune -f",
+            "group": "build",
+            "options": {
+                "cwd": "${workspaceFolder}/docker"
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            }
+        },
+        {
+            "label": "🔍 AWS Status Check",
+            "type": "shell",
+            "command": "aws sts get-caller-identity && aws ec2 describe-instances --filters 'Name=tag:Name,Values=NextCloudDockerHost' --query 'Reservations[*].Instances[*].[InstanceId,State.Name,PublicIpAddress]' --output table",
+            "group": "test",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            }
+        }
+    ]
+}

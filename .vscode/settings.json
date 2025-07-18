@@ -1,0 +1,31 @@
+{
+    "terminal.integrated.defaultProfile.linux": "bash",
+    "terminal.integrated.defaultProfile.windows": "PowerShell",
+    "files.associations": {
+        "*.yml": "yaml",
+        "*.yaml": "yaml",
+        "Dockerfile*": "dockerfile",
+        "docker-compose*": "yaml",
+        "*.env*": "properties"
+    },
+    "yaml.schemas": {
+        "https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json": "docker-compose*.yml"
+    },
+    "docker.dockerPath": "docker",
+    "aws.telemetry": false,
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+        "source.fixAll": "explicit"
+    },
+    "files.autoSave": "afterDelay",
+    "files.autoSaveDelay": 1000,
+    "editor.minimap.enabled": true,
+    "editor.wordWrap": "on",
+    "workbench.colorTheme": "Default Dark+",
+    "git.enableSmartCommit": true,
+    "git.confirmSync": false,
+    "terminal.integrated.fontSize": 14,
+    "editor.fontSize": 14,
+    "explorer.confirmDelete": false,
+    "explorer.confirmDragAndDrop": false
+}
