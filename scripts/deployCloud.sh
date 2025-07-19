@@ -37,7 +37,7 @@ docker-compose ps
 
 # Show logs
 echo "Container logs:"
-docker-compose logs --tail=20
+docker compose logs --tail=20
 
 # Display access info
 echo "NextCloud deployment completed!"
