@@ -8,10 +8,10 @@ services:
     restart: unless-stopped
     command: --default-authentication-plugin=mysql_native_password
     environment:
-      MYSQL_ROOT_PASSWORD: ${@root!}
+      MYSQL_ROOT_PASSWORD: Micah123!
       MYSQL_DATABASE: nextcloud
       MYSQL_USER: nextcloud
-      MYSQL_PASSWORD: ${@root!}
+      MYSQL_PASSWORD: Micah123!
     volumes:
       - mysql-data:/var/lib/mysql
       - ./mysql/custom.cnf:/etc/mysql/conf.d/custom.cnf:ro
