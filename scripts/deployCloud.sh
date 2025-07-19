@@ -27,6 +27,13 @@ mkdir -p data/{nextcloud,mysql,redis}
 # Create monitoring configuration files
 echo "Setting up monitoring configuration..."
 mkdir -p monitoring
+
+# Remove directory if it exists to avoid conflict
+if [ -d monitoring/prometheus.yml ]; then
+    echo "Warning: 'monitoring/prometheus.yml' is a directory. Removing it..."
+    rm -rf monitoring/prometheus.yml
+fi
+
 cat > monitoring/prometheus.yml << 'EOF'
 global:
   scrape_interval: 15s
