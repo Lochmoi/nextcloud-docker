@@ -83,12 +83,6 @@ chmod 400 "$PEM_FILE"
 echo "Key pair saved to $PEM_FILE"
 
 
-
-
-
-
-
-
 # Get latest Ubuntu AMI
 echo "Getting latest Ubuntu AMI..."
 AMI_ID=$(aws ec2 describe-images \
@@ -144,4 +138,4 @@ SECURITY_GROUP_ID=$SG_ID
 INSTANCE_ID=$INSTANCE_ID
 PUBLIC_IP=$PUBLIC_IP
 KEY_NAME=$KEY_NAME
-EOF
+EOF 
