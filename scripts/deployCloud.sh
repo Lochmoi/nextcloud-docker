@@ -33,7 +33,7 @@ echo "Waiting for containers to start..."
 sleep 30
 
 # Check container status
-docker-compose ps
+docker compose ps
 
 # Show logs
 echo "Container logs:"
