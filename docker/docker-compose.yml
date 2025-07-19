@@ -30,7 +30,7 @@ services:
     image: redis:7-alpine
     container_name: nextcloud-redis
     restart: unless-stopped
-    command: redis-server --requirepass ${@root!} --appendonly yes
+    command: redis-server --requirepass ${REDIS_PASSWORD} --appendonly yes
     volumes:
       - redis-data:/data
     networks:
@@ -54,14 +54,14 @@ services:
       MYSQL_HOST: nextcloud-db
       MYSQL_DATABASE: nextcloud
       MYSQL_USER: nextcloud
-      MYSQL_PASSWORD: ${@root!}
-      NEXTCLOUD_ADMIN_USER: ${admin}
-      NEXTCLOUD_ADMIN_PASSWORD: ${@root!}
-      #NEXTCLOUD_TRUSTED_DOMAINS: ${NEXTCLOUD_TRUSTED_DOMAINS}
+      MYSQL_PASSWORD: "${MYSQL_PASSWORD}"
+      NEXTCLOUD_ADMIN_USER: "${NEXTCLOUD_ADMIN_USER}"
+      NEXTCLOUD_ADMIN_PASSWORD: "${NEXTCLOUD_ADMIN_PASSWORD}"
+      NEXTCLOUD_TRUSTED_DOMAINS: "${NEXTCLOUD_TRUSTED_DOMAINS}"
       REDIS_HOST: nextcloud-redis
-      REDIS_HOST_PASSWORD: ${@root!}
+      REDIS_HOST_PASSWORD: "${REDIS_PASSWORD}"
       OVERWRITEPROTOCOL: https
-      #OVERWRITEHOST: ${NEXTCLOUD_DOMAIN}
+      OVERWRITEHOST: "${NEXTCLOUD_DOMAIN}"
       TRUSTED_PROXIES: nginx-proxy
     volumes:
       - nextcloud-data:/var/www/html
