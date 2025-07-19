@@ -13,10 +13,10 @@ cd /home/ubuntu/nextcloud-docker
 
 # Copy environment file l 
 if [ ! -f .env ]; then
-    cp .env.example .env
-    echo "Please edit .env file with your secure passwords"
-    nano .env
+    echo "Error: .env file is missing. Please create it manually before running this script."
+    exit 1
 fi
+
 
 # Create data directories
 mkdir -p data/{nextcloud,mysql,redis}
