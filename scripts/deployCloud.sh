@@ -26,7 +26,7 @@ mkdir -p data/{nextcloud,mysql,redis}
 
 # Start containers
 echo "Starting NextCloud containers..."
-docker-compose up -d
+docker compose up -d
 
 # Wait for containers to start
 echo "Waiting for containers to start..."
